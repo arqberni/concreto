@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concreto Valencia | Arquitectura y Diseño Interior</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-concrete {
+            background-color: #f4f4f4;
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+        .step-number {
+            -webkit-text-stroke: 1px #27272a;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-concrete text-zinc-900">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter uppercase">
+                Concreto<span class="font-light text-zinc-400">.</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#proyectos" class="nav-link">Proyectos</a>
+                <a href="#metodo" class="nav-link">Método</a>
+                <a href="#sobre-nosotros" class="nav-link">Nosotros</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </div>
+            <div class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" alt="Arquitectura Minimalista" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-5xl md:text-8xl mb-6">Materia y Silencio.</h1>
+            <p class="text-lg md:text-xl font-light tracking-widest uppercase mb-8">Arquitectura & Interiorismo en Valencia</p>
+            <a href="#proyectos" class="inline-block border border-white px-8 py-3 hover:bg-white hover:text-black transition-colors duration-500 uppercase text-xs tracking-[0.3em]">Explorar Proyectos</a>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <span class="text-zinc-400 text-sm uppercase tracking-widest block mb-2">Portfolio</span>
+                <h2 class="text-4xl md:text-6xl">Proyectos Seleccionados</h2>
+            </div>
+            <p class="text-zinc-500 max-w-sm text-sm mt-4 md:mt-0 font-light italic text-right">
+                Una mirada a través de la forma, la luz y la honestidad de los materiales.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200">
+                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800" alt="Render Interior" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Casa Mislata</h3>
+                    <p class="text-xs uppercase tracking-widest font-light">Residencial | 2023</p>
+                </div>
+            </div>
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Detalle Arquitectónico" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Ático Ruzafa</h3>
+                    <p class="text-xs uppercase tracking-widest font-light">Reforma Integral | 2024</p>
+                </div>
+            </div>
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200">
+                <img src="./img/img1.jpg" alt="Minimalismo Concrete" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">McD Valencia Centro</h3>
+                    <p class="text-xs uppercase tracking-widest font-light">Restaurante Remodel | 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Método (NUEVA SECCIÓN) -->
+    <section id="metodo" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="text-zinc-400 text-sm uppercase tracking-widest block mb-2">El Camino</span>
+                <h2 class="text-4xl md:text-6xl">Nuestro Proceso</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
+                <!-- Paso 1 -->
+                <div class="flex flex-col">
+                    <span class="text-6xl font-bold step-number serif mb-4">01</span>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Escucha</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Entrevista previa para conocer tus ideas y, sobre todo, a los usuarios que habitarán el espacio.
+                    </p>
+                </div>
+                <!-- Paso 2 -->
+                <div class="flex flex-col">
+                    <span class="text-6xl font-bold step-number serif mb-4">02</span>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Análisis</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Visita al sitio y mediciones exhaustivas para entender el contexto y las posibilidades reales.
+                    </p>
+                </div>
+                <!-- Paso 3 -->
+                <div class="flex flex-col">
+                    <span class="text-6xl font-bold step-number serif mb-4">03</span>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Diseño</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Propuestas de diseño personalizadas donde la arquitectura y el interiorismo se funden.
+                    </p>
+                </div>
+                <!-- Paso 4 -->
+                <div class="flex flex-col">
+                    <span class="text-6xl font-bold step-number serif mb-4">04</span>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Precisión</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Presupuesto detallado de ejecución basado estrictamente en el diseño aprobado.
+                    </p>
+                </div>
+                <!-- Paso 5 -->
+                <div class="flex flex-col">
+                    <span class="text-6xl font-bold step-number serif mb-4">05</span>
+                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Realidad</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Ejecución de obra bajo nuestra supervisión, garantizando que el "concreto" sea fiel al papel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="sobre-nosotros" class="py-24 bg-zinc-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="border border-zinc-700 p-2 inline-block">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="Pareja Arquitecto e Interiorista trabajando" class="w-full aspect-square object-cover grayscale opacity-80">
+                </div>
+                <div class="absolute -bottom-10 -right-10 hidden lg:block border border-zinc-700 p-2 bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=300" alt="Detalle de hormigón y materiales" class="w-48 h-48 object-cover grayscale">
+                </div>
+            </div>
+            <div>
+                <span class="text-zinc-500 text-sm uppercase tracking-widest block mb-4">El Equipo Detrás del Proyecto</span>
+                <h2 class="text-4xl md:text-6xl mb-8 leading-tight text-white">Arquitectura e Interiorismo. <br><span class="italic serif">Un solo lenguaje.</span></h2>
+                <p class="text-zinc-400 font-light leading-relaxed mb-6">
+                    Somos una pareja de arquitecto e interiorista unidos por una misma obsesión: la materialidad honesta. Creemos que un espacio solo alcanza la perfección cuando la estructura y el detalle dialogan sin interrupciones.
+                </p>
+                <p class="text-zinc-400 font-light leading-relaxed mb-6">
+                    Nuestro proceso nace de la escucha. Realizamos **entrevistas previas profundas** para entender no solo cómo vives, sino cómo quieres sentirte. No proyectamos para nosotros, sino para materializar tu espacio ideal de la manera más **óptima y concreta** posible.
+                </p>
+                <p class="text-zinc-400 font-light leading-relaxed mb-10">
+                    Cada plano, cada render y cada elección de material es una respuesta personalizada a tu estilo de vida, garantizando un resultado que es, ante todo, tuyo.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="border-l border-zinc-700 pl-4">
+                        <p class="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">Enfoque</p>
+                        <p class="text-lg font-light">100% Personalizado</p>
+                    </div>
+                    <div class="border-l border-zinc-700 pl-4">
+                        <p class="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">Metodología</p>
+                        <p class="text-lg font-light">Escucha Activa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-4xl md:text-6xl mb-8">Hablemos de tu espacio.</h2>
+                <div class="space-y-6 text-zinc-600">
+                    <p class="max-w-md mb-8">Estamos listos para escucharte y empezar a concretar esa idea que tienes en mente.</p>
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-zinc-400 mb-1">Contacto</p>
+                        <p class="text-xl font-light text-zinc-900">+34 635955459</p>
+                    </div> 
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-zinc-400 mb-1">Email</p>
+                        <p class="text-xl font-light text-zinc-900">arqberni@gmail.com</p>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-zinc-400 mb-1">Instagram</p>
+                        <a href="https://www.instagram.com/concreto.valencia/" target="_blank" class="text-xl font-light text-zinc-900 hover:underline underline-offset-8">@concreto.valencia</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-zinc-200 text-center">
+        <p class="text-xs text-zinc-400 uppercase tracking-widest">© 2026 Concreto Valencia. Arquitectura.</p>
+    </footer>
+ <!-- Botón de WhatsApp Flotante con Icono de Font Awesome -->
+    <a href="https://wa.me/34635955459" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center whatsapp-float text-2xl" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
