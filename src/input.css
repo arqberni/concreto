@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+
+@theme {
+  --font-osw: "Oswald", sans-serif;
+}
