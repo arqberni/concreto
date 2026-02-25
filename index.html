@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concreto Valencia | Arquitectura y Diseño Interior</title>
     <link rel="stylesheet" href="./src/output.css">
-    <link rel="icon" type="image/x-icon" href="./img/isologo.png">
+    <link rel="icon" type="image/x-icon" href="./img/isologo.avif">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap"
+        rel="stylesheet">
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -16,26 +19,204 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        h1, h2, h3, .serif {
+
+        h1,
+        h2,
+        h3,
+        .serif {
             font-family: 'Playfair Display', serif;
         }
+
         .bg-concrete {
             background-color: #f4f4f4;
             background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
         }
+
         .nav-link {
             transition: all 0.3s ease;
         }
+
         .nav-link:hover {
             opacity: 0.6;
             letter-spacing: 1px;
         }
+
         .step-number {
             -webkit-text-stroke: 1px #27272a;
             color: transparent;
         }
+
+        /* Custom Scrollbar for Modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Estilos específicos para el Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(9, 9, 11, 0.95);
+            z-index: 110;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 120;
+            color: white;
+            font-size: 1.875rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #a1a1aa;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .modal-container {
+                flex-direction: row;
+                height: 80vh;
+                padding: 0 2rem;
+            }
+        }
+
+        .modal-gallery {
+            width: 100%;
+            height: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .modal-gallery {
+                width: 66.666667%;
+                height: 100%;
+            }
+        }
+
+        .modal-info {
+            width: 100%;
+            height: 50%;
+            overflow-y: auto;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .modal-info {
+                width: 33.333333%;
+                height: 100%;
+                padding-top: 2.5rem;
+            }
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+        }
+
+        .modal-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            opacity: 1;
+        }
+
+        .modal-nav-btn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        @media (min-width: 768px) {
+            .modal-nav-btn {
+                opacity: 0;
+            }
+
+            .modal-gallery:hover .modal-nav-btn {
+                opacity: 1;
+            }
+        }
+
+        .modal-nav-prev {
+            left: 1rem;
+        }
+
+        .modal-nav-next {
+            right: 1rem;
+        }
+
+        .modal-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 10;
+        }
     </style>
 </head>
+
 <body class="bg-concrete text-zinc-900">
 
     <!-- Navegación -->
@@ -43,31 +224,37 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold tracking-tighter uppercase">
                 <!-- Concreto<span class="font-light text-zinc-400">.</span> -->
-                 <img src="./img/logo.png" alt="Concreto Valencia Logo" class="h-8 w-auto">
+                <img src="./img/logo.avif" alt="Concreto Valencia Logo" class="h-8 w-auto">
             </div>
             <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium">
                 <a href="#inicio" class="nav-link">Inicio</a>
                 <a href="#proyectos" class="nav-link">Proyectos</a>
                 <a href="#metodo" class="nav-link">Método</a>
                 <a href="#sobre-nosotros" class="nav-link">Nosotros</a>
+                <a href="#presupuesto"
+                    class="nav-link text-[#a1a1aa] hover:text-zinc-900 border-b border-transparent hover:border-zinc-900 pb-1 font-bold">Presupuesto</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
             </div>
             <div class="md:hidden">
                 <button id="menu-toggle" class="text-zinc-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
             </div>
         </div>
-        
+
         <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden md:hidden fixed top-16 left-0 right-0 bg-white border-b border-zinc-200 max-h-96 overflow-y-auto">
+        <div id="mobile-menu"
+            class="hidden md:hidden fixed top-16 left-0 right-0 bg-white border-b border-zinc-200 max-h-96 overflow-y-auto">
             <div class="flex flex-col space-y-4 px-6 py-4">
                 <a href="#inicio" class="nav-link text-sm uppercase tracking-widest font-medium">Inicio</a>
                 <a href="#proyectos" class="nav-link text-sm uppercase tracking-widest font-medium">Proyectos</a>
                 <a href="#metodo" class="nav-link text-sm uppercase tracking-widest font-medium">Método</a>
                 <a href="#sobre-nosotros" class="nav-link text-sm uppercase tracking-widest font-medium">Nosotros</a>
+                <a href="#presupuesto" class="nav-link text-sm uppercase tracking-widest font-bold">Presupuesto</a>
                 <a href="#contacto" class="nav-link text-sm uppercase tracking-widest font-medium">Contacto</a>
             </div>
         </div>
@@ -76,11 +263,11 @@
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // Cerrar menú al hacer clic en un enlace
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
@@ -96,9 +283,12 @@
             <div class="absolute inset-0 bg-black/30"></div>
         </div>
         <div class="relative z-10 text-center text-white px-4">
-            <h1 class="text-7xl md:text-9xl mb-6 uppercase"  style="font-family: 'Oswald', sans-serif;">Concreto Valencia</h1>
+            <h1 class="text-7xl md:text-9xl mb-6 uppercase" style="font-family: 'Oswald', sans-serif;">Concreto Valencia
+            </h1>
             <p class="text-lg md:text-xl font-light tracking-widest uppercase mb-8">Arquitectura & Interiorismo</p>
-            <a href="#proyectos" class="inline-block border border-white px-8 py-3 hover:bg-white hover:text-black transition-colors duration-500 uppercase text-xs tracking-[0.3em]">Explorar Proyectos</a>
+            <a href="#proyectos"
+                class="inline-block border border-white px-8 py-3 hover:bg-white hover:text-black transition-colors duration-500 uppercase text-xs tracking-[0.3em]">Explorar
+                Proyectos</a>
         </div>
     </section>
 
@@ -115,25 +305,124 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200">
-                <img src="img/img4.avif" alt="Render Interior" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('apartamento-vlc')">
+                <img src="img/img4.avif" alt="Render Interior"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
                     <h3 class="text-2xl mb-1 text-white">Apartamento turistico Valencia</h3>
-                    <p class="text-xs uppercase tracking-widest font-light">Reforma integral | 2023</p>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Reforma integral | 2023</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
                 </div>
             </div>
-            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200">
-                <img src="img/img3.avif" alt="Detalle Arquitectónico" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('barcaza')">
+                <img src="img/img3.avif" alt="Detalle Arquitectónico"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
                     <h3 class="text-2xl mb-1 text-white">Proyecto Barcaza Posadas</h3>
-                    <p class="text-xs uppercase tracking-widest font-light">Proyecto | 2019</p>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Proyecto | 2019</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
                 </div>
             </div>
-            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200">
-                <img src="./img/img2.avif" alt="Minimalismo Concrete" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('casa-hormigon')">
+                <img src="./img/img2.avif" alt="Minimalismo Concrete"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
                     <h3 class="text-2xl mb-1 text-white">Casa de hormigon</h3>
-                    <p class="text-xs uppercase tracking-widest font-light">Proyecto Residencial | 2025</p>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Proyecto Residencial | 2025</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <!-- Nuevos proyectos -->
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('ter')">
+                <img src="img/TER1.avif" alt="Parque Acuático Termas"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Parque Acuático Termas</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Proyecto | Monte Caseros, Argentina</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('tur')">
+                <img src="img/TUR1.avif" alt="Apartamentos Turísticos"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Apartamentos Turísticos</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Obra | Valencia, España</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('pep')">
+                <img src="img/PEP1.avif" alt="Vivienda Aislada en Madera"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Vivienda Aislada en Madera</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Proyecto | Pto Libertad, Misiones</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="py-16 bg-concrete border-y border-zinc-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-4 text-center">
+                <div class="flex flex-col items-center justify-center text-zinc-900">
+                    <i class="fa-solid fa-helmet-safety text-3xl mb-4 text-zinc-600"></i>
+                    <span class="text-3xl md:text-4xl font-serif mb-2">+6.150</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-zinc-500 font-medium">m²
+                        Construidos</span>
+                </div>
+                <div class="flex flex-col items-center justify-center text-zinc-900">
+                    <i class="fa-solid fa-pen-ruler text-3xl mb-4 text-zinc-600"></i>
+                    <span class="text-3xl md:text-4xl font-serif mb-2">+12.780</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-zinc-500 font-medium">m²
+                        Proyectados</span>
+                </div>
+                <div class="flex flex-col items-center justify-center text-zinc-900">
+                    <i class="fa-solid fa-couch text-3xl mb-4 text-zinc-600"></i>
+                    <span class="text-3xl md:text-4xl font-serif mb-2">+120</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-zinc-500 font-medium">Diseños
+                        interiorismo</span>
+                </div>
+                <div class="flex flex-col items-center justify-center text-zinc-900">
+                    <i class="fa-solid fa-calendar-days text-3xl mb-4 text-zinc-600"></i>
+                    <span class="text-3xl md:text-4xl font-serif mb-2">+12</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-zinc-500 font-medium">Años
+                        experiencia</span>
+                </div>
+                <div class="flex flex-col items-center justify-center col-span-2 md:col-span-1 text-zinc-900">
+                    <i class="fa-solid fa-location-dot text-3xl mb-4 text-zinc-600"></i>
+                    <span class="text-3xl md:text-4xl font-serif mb-2 uppercase">Valencia</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-zinc-500 font-medium">Ubicados
+                        en</span>
                 </div>
             </div>
         </div>
@@ -146,7 +435,7 @@
                 <span class="text-zinc-400 text-sm uppercase tracking-widest block mb-2">El Camino</span>
                 <h2 class="text-4xl md:text-6xl">Nuestro Proceso</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
                 <!-- Paso 1 -->
                 <div class="flex flex-col">
@@ -197,23 +486,33 @@
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="relative">
                 <div class="border border-zinc-700 p-2 inline-block">
-                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="Pareja Arquitecto e Interiorista trabajando" class="w-full aspect-square object-cover grayscale opacity-80">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800"
+                        alt="Pareja Arquitecto e Interiorista trabajando"
+                        class="w-full aspect-square object-cover grayscale opacity-80">
                 </div>
                 <div class="absolute -bottom-10 -right-10 hidden lg:block border border-zinc-700 p-2 bg-zinc-900">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=300" alt="Detalle de hormigón y materiales" class="w-48 h-48 object-cover grayscale">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=300"
+                        alt="Detalle de hormigón y materiales" class="w-48 h-48 object-cover grayscale">
                 </div>
             </div>
             <div>
-                <span class="text-zinc-500 text-sm uppercase tracking-widest block mb-4">El Equipo Detrás del Proyecto</span>
-                <h2 class="text-4xl md:text-6xl mb-8 leading-tight text-white">Arquitectura e Interiorismo. <br><span class="italic serif">Un solo lenguaje.</span></h2>
+                <span class="text-zinc-500 text-sm uppercase tracking-widest block mb-4">El Equipo Detrás del
+                    Proyecto</span>
+                <h2 class="text-4xl md:text-6xl mb-8 leading-tight text-white">Arquitectura e Interiorismo. <br><span
+                        class="italic serif">Un solo lenguaje.</span></h2>
                 <p class="text-zinc-400 font-light leading-relaxed mb-6">
-                    Somos una pareja de arquitecto e interiorista unidos por una misma obsesión: la materialidad honesta. Creemos que un espacio solo alcanza la perfección cuando la estructura y el detalle dialogan sin interrupciones.
+                    Somos una pareja de arquitecto e interiorista unidos por una misma obsesión: la materialidad
+                    honesta. Creemos que un espacio solo alcanza la perfección cuando la estructura y el detalle
+                    dialogan sin interrupciones.
                 </p>
                 <p class="text-zinc-400 font-light leading-relaxed mb-6">
-                    Nuestro proceso nace de la escucha. Realizamos **entrevistas previas profundas** para entender no solo cómo vives, sino cómo quieres sentirte. No proyectamos para nosotros, sino para materializar tu espacio ideal de la manera más **óptima y concreta** posible.
+                    Nuestro proceso nace de la escucha. Realizamos **entrevistas previas profundas** para entender no
+                    solo cómo vives, sino cómo quieres sentirte. No proyectamos para nosotros, sino para materializar tu
+                    espacio ideal de la manera más **óptima y concreta** posible.
                 </p>
                 <p class="text-zinc-400 font-light leading-relaxed mb-10">
-                    Cada plano, cada render y cada elección de material es una respuesta personalizada a tu estilo de vida, garantizando un resultado que es, ante todo, tuyo.
+                    Cada plano, cada render y cada elección de material es una respuesta personalizada a tu estilo de
+                    vida, garantizando un resultado que es, ante todo, tuyo.
                 </p>
                 <div class="grid grid-cols-2 gap-8">
                     <div class="border-l border-zinc-700 pl-4">
@@ -229,38 +528,524 @@
         </div>
     </section>
 
+    </section>
+
+    <!-- Pre-Presupuesto -->
+    <section id="presupuesto" class="py-24 bg-concrete border-y border-zinc-200">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-zinc-500 text-sm uppercase tracking-widest block mb-2">Calculadora</span>
+                <h2 class="text-4xl md:text-6xl text-zinc-900">Pre-presupuesto.</h2>
+                <p class="text-zinc-600 mt-4 font-light">Calcula un estimado al instante según tus necesidades.</p>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 shadow-xl border border-zinc-100">
+                <div class="mb-8">
+                    <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">¿Qué servicio
+                        necesitas?</label>
+                    <div class="relative">
+                        <select id="calc-service" onchange="changeCalcForm()"
+                            class="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 py-3 px-4 focus:outline-none focus:border-zinc-900 appearance-none font-light cursor-pointer transition-colors">
+                            <option value="" disabled selected>Selecciona un servicio...</option>
+                            <option value="medicion">Medición de estado actual</option>
+                            <option value="render">Renderizado / Infoarquitectura</option>
+                            <option value="obra-nueva">Obra Nueva</option>
+                            <option value="reforma">Reforma / Rehabilitación</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-500">
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario Medición -->
+                <div id="form-medicion" class="calc-form hidden space-y-6 animate-[fadeIn_0.5s_ease]">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Superficie aprox.
+                                (m²)</label>
+                            <input type="number" id="med-m2" min="1" placeholder="Ej: 80"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Distancia (km
+                                desde Valencia)</label>
+                            <input type="number" id="med-km" min="0" placeholder="Ej: 15"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Tipo de local
+                                (Actual)</label>
+                            <input type="text" placeholder="Ej: Vivienda, Local comercial..."
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario Renderizado -->
+                <div id="form-render" class="calc-form hidden space-y-6 animate-[fadeIn_0.5s_ease]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Metros cuadrados
+                                totales (m²)</label>
+                            <input type="number" id="ren-m2" min="1" placeholder="Ej: 80"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Estado del
+                                modelo</label>
+                            <select id="ren-model"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                                <option value="3">Modelado completo desde 0</option>
+                                <option value="0">Ya existe modelo 3D previo</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Cantidad de
+                                imágenes</label>
+                            <input type="number" id="ren-imgs" min="1" placeholder="Ej: 5"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Nivel de
+                                detalle</label>
+                            <select id="ren-detail"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                                <option value="50">Estándar</option>
+                                <option value="150">Alto/Fotorealista</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario Obra Nueva -->
+                <div id="form-obra-nueva" class="calc-form hidden space-y-6 animate-[fadeIn_0.5s_ease]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Metros cuadrados a
+                                construir (m²)</label>
+                            <input type="number" id="obra-m2" min="1" placeholder="Ej: 150"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Nivel de
+                                calidades</label>
+                            <select id="obra-calidad"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                                <option value="980">Básica (desde 980 €/m²)</option>
+                                <option value="1300" selected>Estándar (desde 1.300 €/m²)</option>
+                                <option value="1700">Premium (desde 1.700 €/m²)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Tipo de
+                                obra</label>
+                            <input type="text" placeholder="Ej: Residencial, Edificio, etc."
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Ubicación</label>
+                            <input type="text" placeholder="Localidad de la parcela"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario Reforma -->
+                <div id="form-reforma" class="calc-form hidden space-y-6 animate-[fadeIn_0.5s_ease]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Metros cuadrados
+                                de reforma (m²)</label>
+                            <input type="number" id="ref-m2" min="1" placeholder="Ej: 90"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Nivel de calidades
+                                (aprox)</label>
+                            <select id="ref-calidad"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                                <option value="500">Básica (desde 500 €/m²)</option>
+                                <option value="800" selected>Estándar (desde 800 €/m²)</option>
+                                <option value="1200">Premium (desde 1.200 €/m²)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">¿Implica cambio de
+                                uso?</label>
+                            <select id="ref-uso"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                                <option value="no">No</option>
+                                <option value="si">Sí (ej: local a vivienda +20%)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Ubicación</label>
+                            <input type="text" placeholder="Localidad"
+                                class="w-full bg-zinc-50 border border-zinc-200 py-3 px-4 focus:outline-none focus:border-zinc-900 font-light">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-zinc-200 hidden" id="calc-result-container">
+                    <button onclick="calculateQuote()"
+                        class="w-full bg-zinc-900 text-white py-4 uppercase tracking-[0.2em] text-sm hover:bg-zinc-800 transition-colors mb-8">
+                        Estimar Presupuesto
+                    </button>
+
+                    <div id="quote-result"
+                        class="bg-zinc-50 p-6 border border-zinc-200 text-center hidden animate-[fadeIn_0.5s_ease]">
+                        <p class="text-xs uppercase tracking-widest text-zinc-500 mb-2">Inversión Estimada</p>
+                        <h3 class="text-4xl md:text-5xl font-serif text-zinc-900 mb-4" id="quote-price">-- €</h3>
+                        <p class="text-sm text-zinc-500 font-light italic">
+                            *Valor orientativo. No constituye un presupuesto final ni vinculante. El gasto final puede
+                            variar según mediciones reales, estado del inmueble, licencias y honorarios técnicos. Revisa
+                            con nosotros tu proyecto para un coste exacto.
+                        </p>
+                        <a href="#contacto"
+                            class="inline-block mt-6 border-b border-zinc-900 text-zinc-900 uppercase tracking-widest text-xs pb-1 hover:text-zinc-500 hover:border-zinc-500 transition-colors">
+                            Solicitar presupuesto detallado
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Contacto -->
     <section id="contacto" class="py-24 max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-16">
             <div>
                 <h2 class="text-4xl md:text-6xl mb-8">Hablemos de tu espacio.</h2>
                 <div class="space-y-6 text-zinc-600">
-                    <p class="max-w-md mb-8">Estamos listos para escucharte y empezar a concretar esa idea que tienes en mente.</p>
+                    <p class="max-w-md mb-8">Estamos listos para escucharte y empezar a concretar esa idea que tienes en
+                        mente.</p>
                     <div>
                         <p class="text-xs uppercase tracking-widest text-zinc-400 mb-1">Contacto</p>
                         <p class="text-xl font-light text-zinc-900">+34 635955459</p>
-                    </div> 
+                    </div>
                     <div>
                         <p class="text-xs uppercase tracking-widest text-zinc-400 mb-1">Email</p>
                         <p class="text-xl font-light text-zinc-900">arqberni@gmail.com</p>
                     </div>
                     <div>
                         <p class="text-xs uppercase tracking-widest text-zinc-400 mb-1">Instagram</p>
-                        <a href="https://www.instagram.com/concreto.valencia/" target="_blank" class="text-xl font-light text-zinc-900 hover:underline underline-offset-8">@concreto.valencia</a>
+                        <a href="https://www.instagram.com/concreto.valencia/" target="_blank"
+                            class="text-xl font-light text-zinc-900 hover:underline underline-offset-8">@concreto.valencia</a>
                     </div>
                 </div>
             </div>
-        
+
         </div>
     </section>
 
     <footer class="py-12 border-t border-zinc-200 text-center">
         <p class="text-xs text-zinc-400 uppercase tracking-widest">© 2026 Concreto Valencia. Arquitectura.</p>
     </footer>
- <!-- Botón de WhatsApp Flotante con Icono de Font Awesome -->
-    <a href="https://wa.me/34635955459" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center whatsapp-float text-2xl" aria-label="Contactar por WhatsApp">
+    <!-- Botón de WhatsApp Flotante con Icono de Font Awesome -->
+    <a href="https://wa.me/34635955459" target="_blank"
+        class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center whatsapp-float text-2xl"
+        aria-label="Contactar por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Modal de Proyectos -->
+    <div id="project-modal" class="modal-overlay" onclick="closeProjectModal()">
+        <button onclick="closeProjectModal()" class="modal-close">
+            <i class="fa-solid fa-times"></i>
+        </button>
+
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <!-- Galeria / Carrusel -->
+            <div class="modal-gallery group">
+                <img id="modal-main-image" src="" class="modal-img">
+
+                <!-- Controles Carrusel -->
+                <button onclick="prevImage(event)" class="modal-nav-btn modal-nav-prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button onclick="nextImage(event)" class="modal-nav-btn modal-nav-next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <!-- Indicadores -->
+                <div id="modal-indicators" class="modal-indicators">
+                    <!-- Se llenan con JS -->
+                </div>
+            </div>
+
+            <!-- Info del Proyecto -->
+            <div class="modal-info custom-scrollbar">
+                <span id="modal-category" class="text-zinc-400 text-xs uppercase tracking-[0.2em] mb-4 block"></span>
+                <h2 id="modal-title" class="text-3xl md:text-5xl serif mb-8 leading-tight"></h2>
+                <div id="modal-description"
+                    class="text-zinc-300 font-light text-sm md:text-base leading-relaxed space-y-6">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projectsData = {
+            'apartamento-vlc': {
+                title: 'Apartamento turístico Valencia',
+                category: 'Reforma integral | 2023',
+                description: '<p>Este proyecto de reforma integral transforma un espacio oscuro y fragmentado en un apartamento turístico diáfano y luminoso. La elección de materiales busca la atemporalidad, combinando la calidez de su arquitectura original con tonos neutros modernos.</p><p>Se prestó especial atención a la iluminación, tanto natural como artificial, para realzar las texturas de los muros y crear diferentes atmósferas acogedoras a lo largo del día.</p>',
+                images: [
+                    'img/img4.avif',
+                    'img/lin1.avif',
+                    'img/lin2.avif',
+                    'img/lin3.avif',
+                    'img/lin4.avif'
+                ]
+            },
+            'barcaza': {
+                title: 'Proyecto Barcaza Posadas',
+                category: 'Proyecto | 2019',
+                description: '<p>Diseño conceptual para una intervención en el entorno de la Barcaza de Posadas. El proyecto busca integrarse sutilmente en el paisaje fluvial, respetando la memoria del lugar mediante el uso de formas puras y materiales industriales como el acero corten y el hormigón visto.</p><p>Un espacio de contemplación que conecta al visitante con el río de una manera arquitectónica honesta y equilibrada.</p>',
+                images: [
+                    'img/img3.avif',
+                    'img/barc1.avif',
+                    'img/barc2.avif',
+                    'img/barc3.avif',
+                    'img/barc4.avif',
+                    'img/barc5.avif',
+                    'img/barc6.avif',
+                    'img/barc7.avif',
+                    'img/barc8.avif',
+                    'img/barc9.avif',
+                    'img/barc10.avif',
+                    'img/barc11.avif',
+                    'img/barc12.avif',
+                    'img/barc13.avif'
+                ]
+            },
+            'casa-hormigon': {
+                title: 'Casa de hormigón',
+                category: 'Proyecto Residencial | 2025',
+                description: '<p>Vivienda unifamiliar donde el hormigón visto actúa como protagonista absoluto, no solo como elemento estructural sino como acabado final. Su brutalismo exterior contrasta con la calidez interior aportada por el mobiliario y los detalles finos en madera de roble.</p><p>Los grandes ventanales de piso a techo difuminan la frontera entre el interior y el exterior, permitiendo que la naturaleza circundante se convierta en parte fundamental de la arquitectura.</p>',
+                images: [
+                    './img/img2.avif',
+                    'img/hor1.avif',
+                    'img/hor2.avif',
+                    'img/hor3.avif',
+                ]
+            },
+            'ter': {
+                title: 'Parque Acuático Termas',
+                category: 'Proyecto | Monte Caseros, Argentina',
+                description: '<p>Desarrollo conceptual para un complejo termal y parque acuático en Monte Caseros, Argentina. El diseño integra las instalaciones recreativas y de bienestar con el entorno natural, ofreciendo múltiples piscinas, zonas de descanso y recorridos orgánicos.</p><p>La arquitectura busca difuminarse en el paisaje, utilizando formas fluidas y una materialidad que dialoga con los elementos naturales del entorno.</p>',
+                images: [
+                    'img/TER1.avif',
+                    'img/TER2.avif',
+                    'img/TER3.avif',
+                    'img/TER4.avif',
+                    'img/TER5.avif',
+                    'img/TER6.avif',
+                    'img/TER7.avif',
+                    'img/TER8.avif',
+                    'img/TER9.avif',
+                    'img/TER10.avif'
+                ]
+            },
+            'tur': {
+                title: 'Apartamentos Turísticos',
+                category: 'Obra | Valencia, España',
+                description: '<p>Conjunto de apartamentos turísticos desarrollados en la ciudad de Valencia. El proyecto de obra implicó la rehabilitación y diseño de interiores para optimizar los espacios, brindando funcionalidad y confort superior sin perder el estilo contemporáneo.</p><p>Destaca el uso de materiales duraderos y acabados de alta calidad, respondiendo a las exigencias del uso continuo en el sector turístico, y ofreciendo estancias luminosas y acogedoras.</p>',
+                images: [
+                    'img/TUR1.avif',
+                    'img/TUR2.avif',
+                    'img/TUR3.avif',
+                    'img/TUR4.avif',
+                    'img/TUR5.avif',
+                    'img/TUR6.avif',
+                    'img/TUR7.avif',
+                    'img/TUR8.avif',
+                    'img/TUR9.avif',
+                    'img/TUR10.avif',
+                    'img/TUR11.avif',
+                    'img/TUR12.avif'
+                ]
+            },
+            'pep': {
+                title: 'Vivienda Aislada en Madera',
+                category: 'Proyecto | Pto Libertad, Misiones',
+                description: '<p>Proyecto de vivienda unifamiliar aislada construida predominantemente en madera y cuidadosamente integrada en su entorno natural selvático en Puerto Libertad, Misiones. La disposición arquitectónica prioriza las vistas y la ventilación natural, adaptándose a las condiciones climáticas de la región.</p><p>Su estructura eleva la vivienda para minimizar el impacto en el terreno, ofreciendo amplias terrazas y una cálida conexión entre el refugio interior y la abundante vegetación exterior.</p>',
+                images: [
+                    'img/PEP1.avif',
+                    'img/PEP2.avif',
+                    'img/PEP3.avif',
+                    'img/PEP4.avif',
+                    'img/PEP5.avif',
+                    'img/PEP6.avif',
+                    'img/PEP7.avif',
+                    'img/PEP8.avif',
+                    'img/PEP9.avif'
+                ]
+            }
+        };
+
+        let currentProjectModal = null;
+        let currentImageModalIndex = 0;
+
+        function openProjectModal(projectId) {
+            const project = projectsData[projectId];
+            if (!project) return;
+
+            currentProjectModal = project;
+            currentImageModalIndex = 0;
+
+            document.getElementById('modal-title').innerText = project.title;
+            document.getElementById('modal-category').innerText = project.category;
+            document.getElementById('modal-description').innerHTML = project.description;
+
+            updateModalImage();
+
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('active');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('active');
+
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        function updateModalImage() {
+            if (!currentProjectModal) return;
+
+            const imgElement = document.getElementById('modal-main-image');
+            imgElement.src = currentProjectModal.images[currentImageModalIndex];
+
+            const indicatorsContainer = document.getElementById('modal-indicators');
+            indicatorsContainer.innerHTML = '';
+
+            currentProjectModal.images.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = `h-2 rounded-full transition-all duration-300 ${index === currentImageModalIndex ? 'bg-white w-8' : 'bg-white/50 w-2 hover:bg-white/80'}`;
+                dot.onclick = (e) => {
+                    e.stopPropagation();
+                    currentImageModalIndex = index;
+                    updateModalImage();
+                };
+                indicatorsContainer.appendChild(dot);
+            });
+        }
+
+        function prevImage(e) {
+            if (e) e.stopPropagation();
+            if (!currentProjectModal) return;
+            currentImageModalIndex = (currentImageModalIndex - 1 + currentProjectModal.images.length) % currentProjectModal.images.length;
+            updateModalImage();
+        }
+
+        function nextImage(e) {
+            if (e) e.stopPropagation();
+            if (!currentProjectModal) return;
+            currentImageModalIndex = (currentImageModalIndex + 1) % currentProjectModal.images.length;
+            updateModalImage();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('project-modal');
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeProjectModal();
+            }
+            if (e.key === 'ArrowRight' && !modal.classList.contains('hidden')) {
+                nextImage();
+            }
+            if (e.key === 'ArrowLeft' && !modal.classList.contains('hidden')) {
+                prevImage();
+            }
+        });
+
+        // Lógica de Calculadora Pre-presupuesto
+        function changeCalcForm() {
+            // Ocultar todos los formularios
+            document.querySelectorAll('.calc-form').forEach(el => el.classList.add('hidden'));
+
+            // Ocultar resultados previos
+            document.getElementById('quote-result').classList.add('hidden');
+
+            const service = document.getElementById('calc-service').value;
+
+            if (service) {
+                // Mostrar contenedor de boton y resultados
+                document.getElementById('calc-result-container').classList.remove('hidden');
+                // Mostrar formulario seleccionado
+                document.getElementById('form-' + service).classList.remove('hidden');
+            }
+        }
+
+        function calculateQuote() {
+            const service = document.getElementById('calc-service').value;
+            let price = 0;
+            let textSurround = "€";
+
+            if (service === 'medicion') {
+                const km = parseFloat(document.getElementById('med-km').value) || 0;
+                const m2 = parseFloat(document.getElementById('med-m2').value) || 0;
+
+                price = 50 + (km * 0.35); // Base tarifa y kilometraje
+
+                if (m2 > 50) {
+                    price += (m2 - 50) * 1; // +1€ por cada m2 que exceda los primeros 50m2
+                }
+            }
+            else if (service === 'render') {
+                const m2 = parseFloat(document.getElementById('ren-m2').value) || 0;
+                const modelPricePerM2 = parseFloat(document.getElementById('ren-model').value) || 0; // 3 euros o 0
+                const imgs = parseInt(document.getElementById('ren-imgs').value) || 0;
+                const detailPrice = parseFloat(document.getElementById('ren-detail').value) || 50; // 50 o 150 euros
+
+                const imgCost = imgs * detailPrice;
+                const modelCost = m2 * modelPricePerM2;
+
+                price = imgCost + modelCost;
+            }
+            else if (service === 'obra-nueva') {
+                const m2 = parseFloat(document.getElementById('obra-m2').value) || 0;
+                const factor = parseFloat(document.getElementById('obra-calidad').value) || 0;
+                price = m2 * factor;
+                textSurround = "€ (Aprox)";
+            }
+            else if (service === 'reforma') {
+                const m2 = parseFloat(document.getElementById('ref-m2').value) || 0;
+                const factor = parseFloat(document.getElementById('ref-calidad').value) || 0;
+                const cambioUso = document.getElementById('ref-uso').value;
+
+                price = m2 * factor;
+
+                if (cambioUso === 'si') {
+                    price = price * 1.20; // 20% aumento por cambio de uso
+                }
+
+                textSurround = "€ (Aprox)";
+            }
+
+            const resultContainer = document.getElementById('quote-result');
+            const priceEl = document.getElementById('quote-price');
+
+            if (price > 0) {
+                // Formatear numero con separadores de miles
+                const formattedPrice = new Intl.NumberFormat('es-ES').format(price.toFixed(2));
+                priceEl.innerText = formattedPrice + ' ' + textSurround;
+                resultContainer.classList.remove('hidden');
+            } else {
+                alert("Por favor, introduce los metros cuadrados o cantidad de imágenes requeridas para realizar el cálculo.");
+                resultContainer.classList.add('hidden');
+            }
+        }
+
+    </script>
 </body>
+
 </html>
