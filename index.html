@@ -387,6 +387,81 @@
                         más</span>
                 </div>
             </div>
+
+            <!-- Nuevos proyectos agregados -->
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('prototipo-a')">
+                <img src="img/a0.avif" alt="Prototipo A | Planta Baja"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Prototipo A | Planta Baja</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Arquitectura Residencial | Modernidad
+                        Accesible</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('prototipo-b')">
+                <img src="img/b0.avif" alt="Prototipo B | Proyecto de Ejecución"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Prototipo B | Proyecto de Ejecución</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Arquitectura Evolutiva | Proyecto
+                        Completo</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('duplex-d')">
+                <img src="img/d0.avif" alt="Prototipo Dúplex D"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Prototipo Dúplex D</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Arquitectura Residencial | Diseño
+                        Escalable</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('vivienda-leo')">
+                <img src="img/l0.avif" alt="Proyecto Vivienda LEO"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Proyecto Vivienda LEO</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Proyecto Residencial | Corrientes</p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
+
+            <div class="group relative aspect-[4/5] overflow-hidden bg-zinc-200 cursor-pointer"
+                onclick="openProjectModal('renders-portfolio')">
+                <img src="img/r0.avif" alt="Portfolio de Infoarquitectura"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute inset-0 bg-zinc-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+                    <h3 class="text-2xl mb-1 text-white">Portfolio de Infoarquitectura</h3>
+                    <p class="text-xs uppercase tracking-widest font-light mb-4">Visualización 3D | Trabajos Destacados
+                    </p>
+                    <span
+                        class="inline-block border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors duration-300 uppercase text-xs tracking-[0.2em] w-max">Ver
+                        más</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -552,12 +627,10 @@
                             <option value="obra-nueva">Obra Nueva</option>
                             <option value="reforma">Reforma / Rehabilitación</option>
                         </select>
-                        <!--
                         <div
                             class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-500">
                             <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </div> 
-                        -->
+                        </div>
                     </div>
                 </div>
 
@@ -887,6 +960,75 @@
                     'img/PEP8.avif',
                     'img/PEP9.avif'
                 ]
+            },
+            'prototipo-a': {
+                title: 'Prototipo A | Planta Baja',
+                category: 'Arquitectura Residencial | Modernidad Accesible',
+                description: '<p>Este prototipo de vivienda de planta baja presenta un diseño inteligente y económico, sin comprometer su marcado estilo moderno. Su concepción arquitectónica flexible permite que la estructura crezca orgánicamente junto con las necesidades de quienes la habitan.</p><p>Materialidades limpias y espacios optimizados crean un hogar funcional y luminoso, ideal como primera vivienda con gran potencial de ampliación.</p>',
+                images: [
+                    'img/a0.avif',
+                    'img/a1.avif',
+                    'img/a2.avif',
+                    'img/a3.avif',
+                    'img/a4.avif',
+                    'img/a5.avif',
+                    'img/a6.avif'
+                ]
+            },
+            'prototipo-b': {
+                title: 'Prototipo B | Proyecto de Ejecución',
+                category: 'Arquitectura Evolutiva | Proyecto Completo',
+                description: '<p>Desarrollado como un proyecto de ejecución integral, el Prototipo B es una propuesta arquitectónica pensada para el futuro. Su distribución espacial estratégica ofrece la posibilidad de ampliar el programa de la vivienda hasta tres confortables habitaciones.</p><p>La solidez de su planteamiento técnico asegura una construcción eficiente y una evolución espacial armónica que respeta la estética original del volumen.</p>',
+                images: [
+                    'img/b0.avif',
+                    'img/b1.avif',
+                    'img/b2.avif',
+                    'img/b3.avif',
+                    'img/b4.avif'
+                ]
+            },
+            'duplex-d': {
+                title: 'Prototipo Dúplex D',
+                category: 'Arquitectura Residencial | Diseño Escalable',
+                description: '<p>El Prototipo D es un dúplex innovador que desafía los límites del espacio. Su versatilidad estructural permite incorporar hasta cuatro habitaciones adicionales, adaptándose a familias en crecimiento de forma fluida.</p><p>Además, contempla la generosa expansión del salón comedor en la planta baja, potenciando la vida social y la conexión interior-exterior sin alterar la armonía del diseño original.</p>',
+                images: [
+                    'img/d0.avif',
+                    'img/d1.avif',
+                    'img/d2.avif',
+                    'img/d3.avif',
+                    'img/d4.avif',
+                    'img/d5.avif'
+                ]
+            },
+            'vivienda-leo': {
+                title: 'Proyecto Vivienda LEO',
+                category: 'Proyecto Residencial | Corrientes',
+                description: '<p>Situado en Corrientes, el hogar LEO es el resultado de un proceso de diseño íntimo y 100% personalizado. Cada decisión proyectual partió de las pasiones, los gustos y la rutina específica de nuestro cliente, logrando un traje a medida convertido en arquitectura.</p><p>Los espacios se entrelazan para abrazar su estilo de vida, demostrando que la mejor arquitectura es aquella que sabe escuchar y materializar la identidad de quienes la habitan.</p>',
+                images: [
+                    'img/l0.avif',
+                    'img/l1.avif',
+                    'img/l2.avif',
+                    'img/l3.avif',
+                    'img/l4.avif',
+                    'img/l5.avif'
+                ]
+            },
+            'renders-portfolio': {
+                title: 'Portfolio de Infoarquitectura',
+                category: 'Visualización 3D | Trabajos Destacados',
+                description: '<p>Una cuidada selección de renders y visualizaciones 3D que actúan como ventana a nuestro trabajo de infoarquitectura. Desde interiores cálidos e inmersivos hasta imponentes fachadas volumétricas.</p><p>Esta colección demuestra la diversidad de lenguajes, la calidad de los detalles y el meticuloso estudio de la luz y las texturas que ofrecemos para llevar cada idea del plano a la realidad visual.</p>',
+                images: [
+                    'img/r0.avif',
+                    'img/r1.avif',
+                    'img/r2.avif',
+                    'img/r3.avif',
+                    'img/r4.avif',
+                    'img/r5.avif',
+                    'img/r6.avif',
+                    'img/r7.avif',
+                    'img/r8.avif',
+                    'img/r9.avif'
+                ]
             }
         };
 
@@ -1049,6 +1191,5 @@
 
     </script>
 </body>
-
 
 </html>
